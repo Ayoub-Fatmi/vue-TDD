@@ -22,6 +22,13 @@ describe("ProductCatalog.vue", () => {
         .default;
       useProductStore = (await import("../../src/stores/productStore"))
         .useProductStore;
+        ProductCard= (await import("../../src/components/ProductCard.vue"))
+        .default;
+        ProductFilter= (await import("../../src/components/ProductFilter.vue"))
+        .default;
+        ProductSort= (await import("../../src/components/ProductSort.vue"))
+        .default;
+      
     } catch (e) {
       expect.fail(
         "Required components or store not found. Make sure to create all required files."
