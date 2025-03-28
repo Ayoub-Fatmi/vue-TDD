@@ -38,6 +38,7 @@ describe("Cart Store", () => {
     // Add a product to the cart
     cartStore.addToCart(product);
 
+    
     // Check if the product was added correctly
     expect(cartStore.items.length).toBe(1);
     expect(cartStore.items[0].product).toEqual(product);

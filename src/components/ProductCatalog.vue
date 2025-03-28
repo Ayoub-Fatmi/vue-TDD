@@ -1,8 +1,8 @@
 <template>
-  <div class="product-filter-sort">
-    <ProductFilter :categories="categories" :selectedCategory="store.selectedCategory" @category-change="store.setCategory" @search-change="store.setSearchQuery" />
-    <ProductSort :currentSort="store.sortOption" @sort-change="store.setSortOption" />
-  </div>
+    <div class="product-filter-sort">
+        <ProductFilter :categories="categories" :selectedCategory="store.selectedCategory" @category-change="store.setCategory" @search-change="store.setSearchQuery" />
+        <ProductSort :currentSort="store.sortOption" @sort-change="store.setSortOption" />
+    </div>
     <div>
         <div v-if="store.filteredProducts.length === 0">
             <p>No products found</p>
