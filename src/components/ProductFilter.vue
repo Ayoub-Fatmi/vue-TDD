@@ -1,6 +1,6 @@
 <template>
-  <select v-model="selectedCategory" class="category-select">
-    <option value="All Categories" data-test="category-option" disabled>All Categories</option>
+  <select v-model="selectedCategory" @change="onCategoryChangee" class="category-select">
+    <option value="" data-test="category-option" >All Categories</option>
     <option v-for="category in categories" :key="category.id" :value="category.id" data-test="category-option" @click="onCategoryChange(category.id)">
       {{ category.name }}
     </option>
@@ -15,15 +15,19 @@
 
   const props = defineProps({
     categories: Array,
-    selectedCategory: "All Categories"
+    selectedCategory : String
   });
 
-  const selectedCategory = ref("All Categories");
+  const selectedCategory = ref("");
   const searchTerm = ref('');
   const emit = defineEmits(['category-change', 'search-change']);
 
   function onCategoryChange(id) {
     emit('category-change', id);
+  }
+
+  function onCategoryChangee() {
+    emit('category-change', selectedCategory.value);
   }
 
   function onSearchChange() {
@@ -38,14 +42,15 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 10px;
-  width: 100%;
+  width: 70%;
 }
 
 .search-input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 70%;
+  margin-bottom: 8px;
 }
 
 .category-select:focus,

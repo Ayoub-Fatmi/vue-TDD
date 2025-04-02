@@ -26,7 +26,9 @@ export const useCartStore = defineStore("cartStore", {
                 this.totalItems += newQuantity - itemToUpdate.quantity;
                 itemToUpdate.quantity = newQuantity;
             }
-            this.calculateSubtotal(); ;
+            this.calculateSubtotal();
+            this.calculateTax();
+            this.calculategrandTotal();
         },
 
         removeFromCart(productId) {
@@ -35,13 +37,17 @@ export const useCartStore = defineStore("cartStore", {
                 this.totalItems -= itemToRemove.quantity;
                 this.items.splice(this.items.indexOf(itemToRemove), 1);
             }
-            this.calculateSubtotal(); ;
+            this.calculateSubtotal();
+            this.calculateTax();
+            this.calculategrandTotal();
         },
 
         clearCart() {
             this.items = [];
             this.totalItems = 0;
             this.subtotal = 0;
+            this.tax = 0;
+            this.grandTotal = 0;
         },
 
         calculateSubtotal() {

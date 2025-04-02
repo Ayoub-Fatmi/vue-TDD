@@ -8,7 +8,7 @@
             <p>No products found</p>
         </div>
         <div v-else class="product-grid">
-            <ProductCard v-for="product in store.filteredProducts" :key="product.id" :product="product" />
+            <ProductCard v-for="product in store.filteredProducts" :key="product.id" :product="product"  @add-to-cart=cart.addToCart />
         </div>
     </div>
 </template>
@@ -19,8 +19,11 @@
     import ProductFilter from './ProductFilter.vue';
     import ProductSort from './ProductSort.vue';
     import { useProductStore } from '../stores/productStore';
+    import { useCartStore } from '../stores/cartStore'; 
 
     const store = useProductStore();
+
+    const cart = useCartStore();
 </script>
 
 <style scoped>
